@@ -15,8 +15,7 @@
             "CMAKE_GENERATOR_PLATFORM": "x64",
             "CLIPPER2_UTILS": "OFF",
             "CLIPPER2_EXAMPLES": "OFF",
-            "CLIPPER2_TESTS": "OFF",
-            "BUILD_SHARED_LIBS": "ON"
+            "CLIPPER2_TESTS": "OFF"
           },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
