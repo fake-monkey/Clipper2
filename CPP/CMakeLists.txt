@@ -330,10 +330,18 @@ write_basic_package_version_file("${PROJECT_BINARY_DIR}/Clipper2ConfigVersion.cm
 configure_package_config_file(
     "Clipper2Config.cmake.in" 
     "${PROJECT_BINARY_DIR}/Clipper2Config.cmake"
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/clipper2
+    INSTALL_DESTINATION cmake/clipper2
 )
 
 export(TARGETS ${CLIPPER2_LIBS} FILE "${PROJECT_BINARY_DIR}/Clipper2Targets.cmake")
+
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(CMAKE_INSTALL_LIBDIR "libd")
+    set(CMAKE_INSTALL_BINDIR "bind")
+else()
+    set(CMAKE_INSTALL_LIBDIR "lib")
+    set(CMAKE_INSTALL_BINDIR "bin")
+endif()
 
 # installation
 install(TARGETS ${CLIPPER2_LIBS} EXPORT Clipper2-targets
@@ -346,7 +354,7 @@ install(
         ${PROJECT_BINARY_DIR}/Clipper2Config.cmake 
         ${PROJECT_BINARY_DIR}/Clipper2ConfigVersion.cmake 
     DESTINATION 
-        ${CMAKE_INSTALL_LIBDIR}/cmake/clipper2
+        cmake/clipper2
 )
 
 install(
@@ -357,7 +365,7 @@ install(
     FILE 
         Clipper2Targets.cmake 
     DESTINATION 
-        ${CMAKE_INSTALL_LIBDIR}/cmake/clipper2
+        cmake/clipper2
 )
 
 
